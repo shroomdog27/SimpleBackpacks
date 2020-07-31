@@ -55,7 +55,6 @@ public class SimpleBackpacks {
 
     @SubscribeEvent
     public static void registerRecipeTypes(RegistryEvent.Register<IRecipeSerializer<?>> event) {
-        LOG.error(new RuntimeException("I am at registerRecipeTypes!"));
         event.getRegistry().register(BackpackRecipe.SERIALIZER);
     }
 }

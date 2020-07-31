@@ -1,0 +1,20 @@
+{
+    "open_backpack":{
+        "category":"player",
+        "sounds":[
+            {
+                "name":"simplebackpacks:open_backpack",
+                "stream":false
+            }
+        ]
+    },
+    "close_backpack":{
+        "category":"player",
+        "sounds":[
+            {
+                "name":"simplebackpacks:close_backpack",
+                "stream":false
+            }
+        ]
+    }
+}
