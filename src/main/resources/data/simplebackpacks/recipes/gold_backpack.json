@@ -1,0 +1,22 @@
+{
+    "type":"simplebackpacks:backpack_recipe",
+    "pattern":[
+        "GCG",
+        "GBG",
+        "GGG"
+    ],
+    "key":{
+        "G":{
+            "tag":"forge:ingots/gold"
+        },
+        "B":{
+            "item":"simplebackpacks:iron_backpack"
+        },
+        "C":{
+            "tag": "forge:chests/wooden"
+        }
+    },
+    "result":{
+        "item":"simplebackpacks:gold_backpack"
+    }
+}

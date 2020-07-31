@@ -1,0 +1,22 @@
+{
+    "type":"simplebackpacks:backpack_recipe",
+    "pattern":[
+        "ICI",
+        "IBI",
+        "III"
+    ],
+    "key":{
+        "I":{
+            "tag":"forge:ingots/iron"
+        },
+        "B":{
+            "item":"simplebackpacks:leather_backpack"
+        },
+        "C":{
+            "tag": "forge:chests/wooden"
+        }
+    },
+    "result":{
+        "item":"simplebackpacks:iron_backpack"
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "type":"minecraft:crafting_shaped",
+    "pattern":[
+        "WLW",
+        "LCL",
+        "WLW"
+    ],
+    "key":{
+        "W":{
+            "tag":"minecraft:wool"
+        },
+        "L":{
+            "tag":"forge:leather"
+        },
+        "C":{
+            "tag": "forge:chests/wooden"
+        }
+    },
+    "result":{
+        "item":"simplebackpacks:leather_backpack"
+    }
+}

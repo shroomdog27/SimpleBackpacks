@@ -1,0 +1,22 @@
+{
+    "type":"simplebackpacks:backpack_recipe",
+    "pattern":[
+        "DDD",
+        "CBC",
+        "DDD"
+    ],
+    "key":{
+        "D":{
+            "tag":"forge:gems/diamond"
+        },
+        "B":{
+            "item":"simplebackpacks:gold_backpack"
+        },
+        "C":{
+            "tag": "forge:chests/wooden"
+        }
+    },
+    "result":{
+        "item":"simplebackpacks:diamond_backpack"
+    }
+}

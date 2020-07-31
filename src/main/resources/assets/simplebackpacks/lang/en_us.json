@@ -1,0 +1,10 @@
+{
+    "language": "English",
+    "language.code": "en_us",
+    "lanaguage.region": "United States",
+    "item.simplebackpacks.leather_backpack":"Leather Backpack",
+    "item.simplebackpacks.iron_backpack":"Iron Backpack",
+    "item.simplebackpacks.gold_backpack":"Gold Backpack",
+    "item.simplebackpacks.diamond_backpack":"Diamond Backpack",
+    "jei.category": "Simple Backpacks"
+}
