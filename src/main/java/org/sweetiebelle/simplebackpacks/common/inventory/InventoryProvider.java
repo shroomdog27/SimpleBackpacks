@@ -126,7 +126,7 @@ public class InventoryProvider implements INBTSerializable<ListNBT> {
                 return new InventoryProvider(new ItemStack(leatherBackpack, 1), leatherBackpack);
             }
             default:
-                throw new IllegalArgumentException("Unknown type: " + type.getName());
+                throw new IllegalArgumentException("Unknown type: " + type.getString());
 
         }
     }

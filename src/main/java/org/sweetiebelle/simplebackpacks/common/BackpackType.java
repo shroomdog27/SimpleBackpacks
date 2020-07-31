@@ -71,7 +71,7 @@ public enum BackpackType implements IStringSerializable {
     }
 
     @Override
-    public String getName() {
+    public String getString() {
         return I18n.format("item.simplebackpacks.%s", name());
     }
 
