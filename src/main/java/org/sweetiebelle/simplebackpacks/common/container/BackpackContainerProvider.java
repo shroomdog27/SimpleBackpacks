@@ -51,6 +51,8 @@ public class BackpackContainerProvider implements INamedContainerProvider {
     @Override
     public Container createMenu(int windowId, PlayerInventory playerInventory, PlayerEntity player) {
         switch (type) {
+            case NETHERITE:
+                return BackpackContainer.createNetheriteContainer(windowId, playerInventory, provider);
             case DIAMOND:
                 return BackpackContainer.createDiamondContainer(windowId, playerInventory, provider);
             case GOLD:

@@ -109,6 +109,10 @@ public class InventoryProvider implements INBTSerializable<ListNBT> {
     public static InventoryProvider createEmptyInventoryProvider(BackpackType type) {
         // I feel like there's a better way to do this...
         switch (type) {
+            case NETHERITE: {
+                ItemBackpack netheriteBackpack = BackpackItems.NETHERITE_BACKPACK.get();
+                return new InventoryProvider(new ItemStack(netheriteBackpack, 1), netheriteBackpack);
+            }
             case DIAMOND: {
                 ItemBackpack diamondBackpack = BackpackItems.DIAMOND_BACKPACK.get();
                 return new InventoryProvider(new ItemStack(diamondBackpack, 1), diamondBackpack);

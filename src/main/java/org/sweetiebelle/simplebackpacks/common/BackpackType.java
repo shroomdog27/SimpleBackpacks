@@ -40,7 +40,8 @@ public enum BackpackType implements IStringSerializable {
     LEATHER("leather_backpack", 18, 9, 175, 149, new ResourceLocation(SimpleBackpacks.MODID, "textures/gui/leather_container.png"), 256, 256),
     IRON("iron_backpack", 36, 9, 175, 185, new ResourceLocation(SimpleBackpacks.MODID, "textures/gui/iron_container.png"), 256, 256),
     GOLD("gold_backpack", 54, 9, 175, 221, new ResourceLocation(SimpleBackpacks.MODID, "textures/gui/gold_container.png"), 256, 256),
-    DIAMOND("diamond_backpack", 77, 11, 219, 239, new ResourceLocation(SimpleBackpacks.MODID, "textures/gui/diamond_container.png"), 256, 256);
+    DIAMOND("diamond_backpack", 77, 11, 219, 239, new ResourceLocation(SimpleBackpacks.MODID, "textures/gui/diamond_container.png"), 256, 256),
+    NETHERITE("netherite_backpack", 104, 13, 255, 258, new ResourceLocation(SimpleBackpacks.MODID, "textures/gui/netherite_container.png"), 512, 512);
 
     public String name;
     public int size;
@@ -69,7 +70,7 @@ public enum BackpackType implements IStringSerializable {
     public String getId() {
         return name().toLowerCase(Locale.ROOT);
     }
-
+    
     @Override
     public String getString() {
         return I18n.format("item.simplebackpacks.%s", name());

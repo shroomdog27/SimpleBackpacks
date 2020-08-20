@@ -43,6 +43,7 @@ public class BackpackItems {
     public static final RegistryObject<ItemBackpack> IRON_BACKPACK = register("iron_backpack", () -> new ItemBackpack(BACKPACK_PROPS, BackpackType.IRON));
     public static final RegistryObject<ItemBackpack> GOLD_BACKPACK = register("gold_backpack", () -> new ItemBackpack(BACKPACK_PROPS, BackpackType.GOLD));
     public static final RegistryObject<ItemBackpack> DIAMOND_BACKPACK = register("diamond_backpack", () -> new ItemBackpack(BACKPACK_PROPS, BackpackType.DIAMOND));
+    public static final RegistryObject<ItemBackpack> NETHERITE_BACKPACK = register("netherite_backpack", () -> new ItemBackpack(BACKPACK_PROPS, BackpackType.NETHERITE));
 
     private static final <T extends ItemBackpack> RegistryObject<T> register(String name, Supplier<T> sup) {
         return ITEMS.register(name, sup);

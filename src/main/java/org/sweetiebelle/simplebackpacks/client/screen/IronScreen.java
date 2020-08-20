@@ -33,14 +33,13 @@ import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.text.ITextComponent;
 
-public class BackpacksScreen extends ContainerScreen<BackpackContainer> {
+public class IronScreen extends ContainerScreen<BackpackContainer> {
 
     private BackpackType backpackType;
     private int textureXSize;
     private int textureYSize;
-    private boolean diamondOffset;
 
-    public BackpacksScreen(BackpackContainer container, PlayerInventory playerInventory, ITextComponent title) {
+    public IronScreen(BackpackContainer container, PlayerInventory playerInventory, ITextComponent title) {
         super(container, playerInventory, title);
 
         this.backpackType = container.getChestType();
@@ -50,7 +49,6 @@ public class BackpacksScreen extends ContainerScreen<BackpackContainer> {
         this.textureYSize = backpackType.textureYSize;
 
         this.passEvents = false;
-        this.diamondOffset = backpackType.equals(BackpackType.DIAMOND);
     }
 
     @Override
@@ -64,7 +62,7 @@ public class BackpacksScreen extends ContainerScreen<BackpackContainer> {
     @Override
     protected void drawGuiContainerForegroundLayer(MatrixStack matrixStack, int mouseX, int mouseY) {
         this.font.drawString(matrixStack, this.title.getString(), 8.0F, 6.0F, 4210752);
-        this.font.drawString(matrixStack, this.playerInventory.getDisplayName().getString(), diamondOffset ? 30.0F : 8.0F, this.ySize - 96 + 2, 4210752);
+        this.font.drawString(matrixStack, this.playerInventory.getDisplayName().getString(),  8.0F, this.ySize - 96 + 2, 4210752);
     }
 
     @SuppressWarnings("deprecation")

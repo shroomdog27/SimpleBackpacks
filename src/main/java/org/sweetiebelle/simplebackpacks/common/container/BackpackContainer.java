@@ -25,6 +25,9 @@ package org.sweetiebelle.simplebackpacks.common.container;
 
 import org.sweetiebelle.simplebackpacks.common.BackpackType;
 import org.sweetiebelle.simplebackpacks.common.container.slot.BackpackSlot;
+import org.sweetiebelle.simplebackpacks.common.container.slot.DiamondSlotHandler;
+import org.sweetiebelle.simplebackpacks.common.container.slot.IronSlotHandler;
+import org.sweetiebelle.simplebackpacks.common.container.slot.NetheriteSlotHandler;
 import org.sweetiebelle.simplebackpacks.common.container.slot.SlotHandler;
 import org.sweetiebelle.simplebackpacks.common.inventory.InventoryProvider;
 import org.sweetiebelle.simplebackpacks.common.sounds.BackpackSounds;
@@ -78,6 +81,14 @@ public class BackpackContainer extends Container {
         return new BackpackContainer(BackpackContainerTypes.DIAMOND_BACKPACK.get(), windowId, playerInventory, provider, BackpackType.DIAMOND);
     }
 
+    public static BackpackContainer createNetheriteContainer(int windowId, PlayerInventory playerInventory) {
+        return new BackpackContainer(BackpackContainerTypes.NETHERITE_BACKPACK.get(), windowId, playerInventory, InventoryProvider.createEmptyInventoryProvider(BackpackType.NETHERITE), BackpackType.NETHERITE);
+    }
+
+    public static BackpackContainer createNetheriteContainer(int windowId, PlayerInventory playerInventory, InventoryProvider provider) {
+        return new BackpackContainer(BackpackContainerTypes.NETHERITE_BACKPACK.get(), windowId, playerInventory, provider, BackpackType.NETHERITE);
+    }
+
     public BackpackContainer(ContainerType<? extends BackpackContainer> containerType, int windowId, PlayerInventory playerInventory, InventoryProvider provider, BackpackType backpackType) {
         super(containerType, windowId);
         this.provider = provider;
@@ -88,7 +99,21 @@ public class BackpackContainer extends Container {
 
         inventory.openInventory(playerInventory.player);
 
-        SlotHandler slotHandler = new SlotHandler(provider.getInventory(), playerInventory, backpackType);
+        SlotHandler slotHandler;
+        switch (backpackType) {
+            case NETHERITE: {
+                slotHandler = new NetheriteSlotHandler(provider.getInventory(), playerInventory, backpackType);
+                break;
+            }
+            case DIAMOND: {
+                slotHandler = new DiamondSlotHandler(provider.getInventory(), playerInventory, backpackType);
+                break;
+            }
+            default: {
+                slotHandler = new IronSlotHandler(provider.getInventory(), playerInventory, backpackType);
+                break;
+            }
+        }
         for (BackpackSlot slot : slotHandler.getSlots())
             addSlot(slot);
     }
