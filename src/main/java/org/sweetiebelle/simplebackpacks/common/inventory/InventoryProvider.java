@@ -25,7 +25,6 @@ package org.sweetiebelle.simplebackpacks.common.inventory;
 
 import javax.annotation.Nonnull;
 
-import org.sweetiebelle.simplebackpacks.SimpleBackpacks;
 import org.sweetiebelle.simplebackpacks.common.BackpackType;
 import org.sweetiebelle.simplebackpacks.common.item.BackpackItems;
 import org.sweetiebelle.simplebackpacks.common.item.ItemBackpack;
@@ -66,20 +65,15 @@ public class InventoryProvider implements INBTSerializable<ListNBT> {
     }
 
     public void setItemStack(@Nonnull ItemStack backpack) {
-        if (backpack == null)
-            throw new NullPointerException();
-        if (!(backpack.getItem() instanceof ItemBackpack))
-            throw new IllegalArgumentException("Item " + backpack.getItem().toString() + " is not an ItemBackpack");
+        Preconditions.checkNotNull(backpack);
+        Preconditions.checkArgument(backpack.getItem() instanceof ItemBackpack, "Item " + backpack.getItem().toString() + " is not an ItemBackpack");
         this.backpack = backpack;
         save();
     }
 
     public void save() {
-        SimpleBackpacks.LOG.debug("Saving InventoryProvider with the following ItemStack");
-        SimpleBackpacks.LOG.debug(backpack.toString());
         if (!backpack.hasTag())
             backpack.setTag(new CompoundNBT());
-
         CompoundNBT current = backpack.getTag();
         current.put("inventory", serializeNBT());
     }

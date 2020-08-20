@@ -28,9 +28,6 @@ import java.util.Locale;
 import javax.annotation.Nullable;
 
 import org.sweetiebelle.simplebackpacks.SimpleBackpacks;
-import org.sweetiebelle.simplebackpacks.common.item.BackpackItems;
-import org.sweetiebelle.simplebackpacks.common.item.ItemBackpack;
-
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.ResourceLocation;
@@ -78,21 +75,5 @@ public enum BackpackType implements IStringSerializable {
 
     public int getRowCount() {
         return size / rowLength;
-    }
-
-    @Nullable
-    public static ItemBackpack get(BackpackType type) {
-        switch (type) {
-            case LEATHER:
-                return BackpackItems.LEATHER_BACKPACK.get();
-            case IRON:
-                return BackpackItems.IRON_BACKPACK.get();
-            case GOLD:
-                return BackpackItems.GOLD_BACKPACK.get();
-            case DIAMOND:
-                return BackpackItems.DIAMOND_BACKPACK.get();
-            default:
-                return null;
-        }
     }
 }
