@@ -55,7 +55,7 @@ public class IronScreen extends ContainerScreen<BackpackContainer> {
     public void render(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks) {
         this.renderBackground(matrixStack);
         super.render(matrixStack, mouseX, mouseY, partialTicks);
-        this.func_230459_a_(matrixStack, mouseX, mouseY);
+        this.renderHoveredTooltip(matrixStack, mouseX, mouseY);
 
     }
 
@@ -65,7 +65,6 @@ public class IronScreen extends ContainerScreen<BackpackContainer> {
         this.font.drawString(matrixStack, this.playerInventory.getDisplayName().getString(),  8.0F, this.ySize - 96 + 2, 4210752);
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     protected void drawGuiContainerBackgroundLayer(MatrixStack matrixStack, float partialTicks, int mouseX, int mouseY) {
         RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
