@@ -27,13 +27,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.sweetiebelle.simplebackpacks.common.container.BackpackContainerTypes;
 import org.sweetiebelle.simplebackpacks.common.item.BackpackItems;
-import org.sweetiebelle.simplebackpacks.common.recipe.BackpackRecipe;
 import org.sweetiebelle.simplebackpacks.common.sounds.BackpackSounds;
 
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -51,10 +47,5 @@ public class SimpleBackpacks {
         BackpackItems.ITEMS.register(modBus);
         BackpackContainerTypes.CONTAINERS.register(modBus);
         BackpackSounds.SOUNDS.register(modBus);
-    }
-
-    @SubscribeEvent
-    public static void registerRecipeTypes(RegistryEvent.Register<IRecipeSerializer<?>> event) {
-        event.getRegistry().register(BackpackRecipe.SERIALIZER);
     }
 }
