@@ -24,9 +24,11 @@
 package org.sweetiebelle.simplebackpacks.client;
 
 import org.sweetiebelle.simplebackpacks.SimpleBackpacks;
+import org.sweetiebelle.simplebackpacks.common.container.BackpackContainer;
 import org.sweetiebelle.simplebackpacks.common.container.BackpackContainerTypes;
 
 import net.minecraft.client.gui.ScreenManager;
+import net.minecraft.client.gui.ScreenManager.IScreenFactory;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -38,10 +40,11 @@ public class BackpacksClient {
 
     @SubscribeEvent
     public static void setupClient(FMLClientSetupEvent event) {
-        ScreenManager.registerFactory(BackpackContainerTypes.LEATHER_BACKPACK.get(), (container, inventory, title) -> new BackpackScreen(container, inventory, title, 8.0F));
-        ScreenManager.registerFactory(BackpackContainerTypes.IRON_BACKPACK.get(), (container, inventory, title) -> new BackpackScreen(container, inventory, title, 8.0F));
-        ScreenManager.registerFactory(BackpackContainerTypes.GOLD_BACKPACK.get(), (container, inventory, title) -> new BackpackScreen(container, inventory, title, 8.0F));
-        ScreenManager.registerFactory(BackpackContainerTypes.DIAMOND_BACKPACK.get(), (container, inventory, title) -> new BackpackScreen(container, inventory, title, 30.0F));
-        ScreenManager.registerFactory(BackpackContainerTypes.NETHERITE_BACKPACK.get(), (container, inventory, title) -> new BackpackScreen(container, inventory, title, 47.0F));
+        // My gradle complains if we don't explicitly cast the IScreenFactory<BackpackContainer, BackpackScreen>.
+        ScreenManager.registerFactory(BackpackContainerTypes.LEATHER_BACKPACK.get(), (IScreenFactory<BackpackContainer, BackpackScreen>) (container, inventory, title) -> new BackpackScreen(container, inventory, title, 8.0F));
+        ScreenManager.registerFactory(BackpackContainerTypes.IRON_BACKPACK.get(), (IScreenFactory<BackpackContainer, BackpackScreen>) (container, inventory, title) -> new BackpackScreen(container, inventory, title, 8.0F));
+        ScreenManager.registerFactory(BackpackContainerTypes.GOLD_BACKPACK.get(), (IScreenFactory<BackpackContainer, BackpackScreen>) (container, inventory, title) -> new BackpackScreen(container, inventory, title, 8.0F));
+        ScreenManager.registerFactory(BackpackContainerTypes.DIAMOND_BACKPACK.get(), (IScreenFactory<BackpackContainer, BackpackScreen>) (container, inventory, title) -> new BackpackScreen(container, inventory, title, 30.0F));
+        ScreenManager.registerFactory(BackpackContainerTypes.NETHERITE_BACKPACK.get(), (IScreenFactory<BackpackContainer, BackpackScreen>) (container, inventory, title) -> new BackpackScreen(container, inventory, title, 47.0F));
     }
 }
