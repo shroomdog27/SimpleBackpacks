@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  **/
-package org.sweetiebelle.simplebackpacks.client.screen;
+package org.sweetiebelle.simplebackpacks.client;
 
 import org.sweetiebelle.simplebackpacks.common.BackpackType;
 import org.sweetiebelle.simplebackpacks.common.container.BackpackContainer;
@@ -33,13 +33,14 @@ import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.text.ITextComponent;
 
-public class NetheriteScreen extends ContainerScreen<BackpackContainer> {
+public class BackpackScreen extends ContainerScreen<BackpackContainer> {
 
     private BackpackType backpackType;
     private int textureXSize;
     private int textureYSize;
+    private float offset;
 
-    public NetheriteScreen(BackpackContainer container, PlayerInventory playerInventory, ITextComponent title) {
+    public BackpackScreen(BackpackContainer container, PlayerInventory playerInventory, ITextComponent title, float offset) {
         super(container, playerInventory, title);
 
         this.backpackType = container.getChestType();
@@ -49,6 +50,7 @@ public class NetheriteScreen extends ContainerScreen<BackpackContainer> {
         this.textureYSize = backpackType.textureYSize;
 
         this.passEvents = false;
+        this.offset = offset;
     }
 
     @Override
@@ -62,7 +64,7 @@ public class NetheriteScreen extends ContainerScreen<BackpackContainer> {
     @Override
     protected void drawGuiContainerForegroundLayer(MatrixStack matrixStack, int mouseX, int mouseY) {
         this.font.drawString(matrixStack, this.title.getString(), 8.0F, 6.0F, 4210752);
-        this.font.drawString(matrixStack, this.playerInventory.getDisplayName().getString(),  47.0F , this.ySize - 96 + 2, 4210752);
+        this.font.drawString(matrixStack, this.playerInventory.getDisplayName().getString(), offset, this.ySize - 96 + 2, 4210752);
     }
 
     @Override

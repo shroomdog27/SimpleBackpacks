@@ -24,9 +24,6 @@
 package org.sweetiebelle.simplebackpacks.client;
 
 import org.sweetiebelle.simplebackpacks.SimpleBackpacks;
-import org.sweetiebelle.simplebackpacks.client.screen.DiamondScreen;
-import org.sweetiebelle.simplebackpacks.client.screen.IronScreen;
-import org.sweetiebelle.simplebackpacks.client.screen.NetheriteScreen;
 import org.sweetiebelle.simplebackpacks.common.container.BackpackContainerTypes;
 
 import net.minecraft.client.gui.ScreenManager;
@@ -41,10 +38,10 @@ public class BackpacksClient {
 
     @SubscribeEvent
     public static void setupClient(FMLClientSetupEvent event) {
-        ScreenManager.registerFactory(BackpackContainerTypes.LEATHER_BACKPACK.get(), IronScreen::new);
-        ScreenManager.registerFactory(BackpackContainerTypes.IRON_BACKPACK.get(), IronScreen::new);
-        ScreenManager.registerFactory(BackpackContainerTypes.GOLD_BACKPACK.get(), IronScreen::new);
-        ScreenManager.registerFactory(BackpackContainerTypes.DIAMOND_BACKPACK.get(), DiamondScreen::new);
-        ScreenManager.registerFactory(BackpackContainerTypes.NETHERITE_BACKPACK.get(), NetheriteScreen::new);
+        ScreenManager.registerFactory(BackpackContainerTypes.LEATHER_BACKPACK.get(), (container, inventory, title) -> new BackpackScreen(container, inventory, title, 8.0F));
+        ScreenManager.registerFactory(BackpackContainerTypes.IRON_BACKPACK.get(), (container, inventory, title) -> new BackpackScreen(container, inventory, title, 8.0F));
+        ScreenManager.registerFactory(BackpackContainerTypes.GOLD_BACKPACK.get(), (container, inventory, title) -> new BackpackScreen(container, inventory, title, 8.0F));
+        ScreenManager.registerFactory(BackpackContainerTypes.DIAMOND_BACKPACK.get(), (container, inventory, title) -> new BackpackScreen(container, inventory, title, 30.0F));
+        ScreenManager.registerFactory(BackpackContainerTypes.NETHERITE_BACKPACK.get(), (container, inventory, title) -> new BackpackScreen(container, inventory, title, 47.0F));
     }
 }
