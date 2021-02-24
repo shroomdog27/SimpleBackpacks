@@ -26,8 +26,6 @@ package org.sweetiebelle.simplebackpacks.common.sounds;
 
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.function.Supplier;
-
 import org.sweetiebelle.simplebackpacks.SimpleBackpacks;
 
 import net.minecraft.util.ResourceLocation;
@@ -38,12 +36,8 @@ import net.minecraftforge.registries.DeferredRegister;
 public class BackpackSounds {
     public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, SimpleBackpacks.MODID);
 
-    public static final RegistryObject<SoundEvent> OPEN_SOUND = register("open_backpack", () -> new SoundEvent(new ResourceLocation(SimpleBackpacks.MODID, "open_backpack")));
+    public static final RegistryObject<SoundEvent> OPEN_SOUND = SOUNDS.register("open_backpack", () -> new SoundEvent(new ResourceLocation(SimpleBackpacks.MODID, "open_backpack")));
 
-    public static final RegistryObject<SoundEvent> CLOSE_SOUND = register("close_backpack", () -> new SoundEvent(new ResourceLocation(SimpleBackpacks.MODID, "close_backpack")));
-
-    private static final <T extends SoundEvent> RegistryObject<T> register(String name, Supplier<T> sup) {
-        return SOUNDS.register(name, sup);
-    }
+    public static final RegistryObject<SoundEvent> CLOSE_SOUND = SOUNDS.register("close_backpack", () -> new SoundEvent(new ResourceLocation(SimpleBackpacks.MODID, "close_backpack")));
 
 }

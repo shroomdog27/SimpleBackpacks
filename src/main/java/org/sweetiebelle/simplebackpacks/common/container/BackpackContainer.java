@@ -27,7 +27,6 @@ package org.sweetiebelle.simplebackpacks.common.container;
 import java.util.ArrayList;
 
 import org.sweetiebelle.simplebackpacks.common.BackpackType;
-import org.sweetiebelle.simplebackpacks.common.container.slot.BackpackSlot;
 import org.sweetiebelle.simplebackpacks.common.inventory.InventoryProvider;
 import org.sweetiebelle.simplebackpacks.common.sounds.BackpackSounds;
 
@@ -47,7 +46,7 @@ public class BackpackContainer extends Container {
     private InventoryProvider provider;
 
     public static BackpackContainer createLeatherContainer(int windowId, PlayerInventory playerInventory) {
-        return new BackpackContainer(BackpackContainerTypes.LEATHER_BACKPACK.get(), windowId, playerInventory, InventoryProvider.createEmptyInventoryProvider(BackpackType.LEATHER), BackpackType.LEATHER);
+        return createLeatherContainer( windowId, playerInventory, InventoryProvider.createEmptyInventoryProvider(BackpackType.LEATHER));
     }
 
     public static BackpackContainer createLeatherContainer(int windowId, PlayerInventory playerInventory, InventoryProvider provider) {
@@ -55,7 +54,7 @@ public class BackpackContainer extends Container {
     }
 
     public static BackpackContainer createIronContainer(int windowId, PlayerInventory playerInventory) {
-        return new BackpackContainer(BackpackContainerTypes.IRON_BACKPACK.get(), windowId, playerInventory, InventoryProvider.createEmptyInventoryProvider(BackpackType.IRON), BackpackType.IRON);
+        return createIronContainer(windowId, playerInventory, InventoryProvider.createEmptyInventoryProvider(BackpackType.IRON));
     }
 
     public static BackpackContainer createIronContainer(int windowId, PlayerInventory playerInventory, InventoryProvider provider) {
@@ -63,7 +62,7 @@ public class BackpackContainer extends Container {
     }
 
     public static BackpackContainer createGoldContainer(int windowId, PlayerInventory playerInventory) {
-        return new BackpackContainer(BackpackContainerTypes.GOLD_BACKPACK.get(), windowId, playerInventory, InventoryProvider.createEmptyInventoryProvider(BackpackType.GOLD), BackpackType.GOLD);
+        return createGoldContainer(windowId, playerInventory, InventoryProvider.createEmptyInventoryProvider(BackpackType.GOLD));
     }
 
     public static BackpackContainer createGoldContainer(int windowId, PlayerInventory playerInventory, InventoryProvider provider) {
@@ -71,7 +70,7 @@ public class BackpackContainer extends Container {
     }
 
     public static BackpackContainer createDiamondContainer(int windowId, PlayerInventory playerInventory) {
-        return new BackpackContainer(BackpackContainerTypes.DIAMOND_BACKPACK.get(), windowId, playerInventory, InventoryProvider.createEmptyInventoryProvider(BackpackType.DIAMOND), BackpackType.DIAMOND);
+        return createDiamondContainer(windowId, playerInventory, InventoryProvider.createEmptyInventoryProvider(BackpackType.DIAMOND));
     }
 
     public static BackpackContainer createDiamondContainer(int windowId, PlayerInventory playerInventory, InventoryProvider provider) {
@@ -79,7 +78,7 @@ public class BackpackContainer extends Container {
     }
 
     public static BackpackContainer createNetheriteContainer(int windowId, PlayerInventory playerInventory) {
-        return new BackpackContainer(BackpackContainerTypes.NETHERITE_BACKPACK.get(), windowId, playerInventory, InventoryProvider.createEmptyInventoryProvider(BackpackType.NETHERITE), BackpackType.NETHERITE);
+        return createNetheriteContainer(windowId, playerInventory, InventoryProvider.createEmptyInventoryProvider(BackpackType.NETHERITE));
     }
 
     public static BackpackContainer createNetheriteContainer(int windowId, PlayerInventory playerInventory, InventoryProvider provider) {

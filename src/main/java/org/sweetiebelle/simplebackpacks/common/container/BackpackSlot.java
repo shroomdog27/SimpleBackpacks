@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package org.sweetiebelle.simplebackpacks.common.container.slot;
+package org.sweetiebelle.simplebackpacks.common.container;
 
 import org.sweetiebelle.simplebackpacks.common.item.ItemBackpack;
 

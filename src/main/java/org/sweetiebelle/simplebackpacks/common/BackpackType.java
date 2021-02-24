@@ -50,11 +50,11 @@ public enum BackpackType implements IStringSerializable {
     public int textureXSize;
     public int textureYSize;
 
-    BackpackType(int size, int rowLength, int xSize, int ySize, ResourceLocation guiTexture, int textureXSize, int textureYSize) {
+    private BackpackType(int size, int rowLength, int xSize, int ySize, ResourceLocation guiTexture, int textureXSize, int textureYSize) {
         this(null, size, rowLength, xSize, ySize, guiTexture, textureXSize, textureYSize);
     }
 
-    BackpackType(@Nullable String name, int size, int rowLength, int xSize, int ySize, ResourceLocation guiTexture, int textureXSize, int textureYSize) {
+    private BackpackType(@Nullable String name, int size, int rowLength, int xSize, int ySize, ResourceLocation guiTexture, int textureXSize, int textureYSize) {
         this.name = name == null ? name() : name;
         this.size = size;
         this.rowLength = rowLength;
