@@ -23,12 +23,10 @@
  **/
 package org.sweetiebelle.simplebackpacks.common.container;
 
+import java.util.ArrayList;
+
 import org.sweetiebelle.simplebackpacks.common.BackpackType;
 import org.sweetiebelle.simplebackpacks.common.container.slot.BackpackSlot;
-import org.sweetiebelle.simplebackpacks.common.container.slot.DiamondSlotHandler;
-import org.sweetiebelle.simplebackpacks.common.container.slot.IronSlotHandler;
-import org.sweetiebelle.simplebackpacks.common.container.slot.NetheriteSlotHandler;
-import org.sweetiebelle.simplebackpacks.common.container.slot.SlotHandler;
 import org.sweetiebelle.simplebackpacks.common.inventory.InventoryProvider;
 import org.sweetiebelle.simplebackpacks.common.sounds.BackpackSounds;
 
@@ -97,23 +95,42 @@ public class BackpackContainer extends Container {
 
         inventory.openInventory(playerInventory.player);
 
-        SlotHandler slotHandler;
-        switch (backpackType) {
-            case NETHERITE: {
-                slotHandler = new NetheriteSlotHandler(provider.getInventory(), playerInventory, backpackType);
-                break;
-            }
-            case DIAMOND: {
-                slotHandler = new DiamondSlotHandler(provider.getInventory(), playerInventory, backpackType);
-                break;
-            }
-            default: {
-                slotHandler = new IronSlotHandler(provider.getInventory(), playerInventory, backpackType);
-                break;
-            }
+        getSlots(provider.getInventory(), playerInventory, backpackType, getOffset(backpackType)).forEach((slot) -> addSlot(slot));
+    }
+
+    private int getOffset(BackpackType type) {
+        switch (type) {
+            case LEATHER:
+                return 8;
+            case IRON:
+                return 8;
+            case GOLD:
+                return 8;
+            case DIAMOND:
+                return 12;
+            case NETHERITE:
+                return 12;
+            default:
+                return 0;
         }
-        for (BackpackSlot slot : slotHandler.getSlots())
-            addSlot(slot);
+    }
+
+    private ArrayList<BackpackSlot> getSlots(Inventory chestInventory, PlayerInventory playerInventory, BackpackType type, int slotOffset) {
+        ArrayList<BackpackSlot> slots = new ArrayList<BackpackSlot>(type.size + 36);
+        for (int chestRow = 0; chestRow < type.getRowCount(); chestRow++)
+            for (int chestCol = 0; chestCol < type.rowLength; chestCol++)
+                slots.add(new BackpackSlot(chestInventory, chestCol + chestRow * type.rowLength, slotOffset + chestCol * 18, 18 + chestRow * 18));
+
+        int leftCol = (type.xSize - 162) / 2 + 2;
+
+        for (int playerInvRow = 0; playerInvRow < 3; playerInvRow++)
+            for (int playerInvCol = 0; playerInvCol < 9; playerInvCol++)
+                slots.add(new BackpackSlot(playerInventory, playerInvCol + playerInvRow * 9 + 9, leftCol + playerInvCol * 18, type.ySize - (4 - playerInvRow) * 18 - 9));
+
+        for (int hotbarSlot = 0; hotbarSlot < 9; hotbarSlot++) {
+            slots.add(new BackpackSlot(playerInventory, hotbarSlot, leftCol + hotbarSlot * 18, type.ySize - 23));
+        }
+        return slots;
     }
 
     @Override
